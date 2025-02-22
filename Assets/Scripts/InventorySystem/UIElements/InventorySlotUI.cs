@@ -101,15 +101,21 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!isDragging)
-        {
-            if (_slot.IsSelected) {
+
+        if (eventData.button == PointerEventData.InputButton.Left) {
+            if (!isDragging) {
+                if (_slot.IsSelected) {
                 _slot.IncrementSelection();
-            }else {
+                }else {
                 _slot.Select();
+                }
             }
-            
+        }else if (eventData.button == PointerEventData.InputButton.Right) {
+            _slot.DecreaseSelection();
+        }else if (eventData.button == PointerEventData.InputButton.Middle) {
+            _slot.SelectAll();
         }
+        
     }
 
     public void OnSlotSelected() {
@@ -121,7 +127,7 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         }
         
     }
-    
+
     public void OnSlotDeselected() {
         QuantityText.text = "";
          if (Selected == null) {

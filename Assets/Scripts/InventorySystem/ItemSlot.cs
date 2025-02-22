@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEngine;
 
 [System.Serializable]
@@ -88,6 +89,18 @@ public class ItemSlot
             }else {
                 Deselect();
             }
+        }
+    }
+    public void SelectAll() {
+        QuantitySelected = Amount;
+        OnSlotSelected?.Invoke();
+    }
+    public void DecreaseSelection() {
+        if (QuantitySelected == 1) {
+            Deselect();
+        }else {
+            QuantitySelected--;
+            OnSlotSelected?.Invoke();
         }
     }
     public void Deselect() {
