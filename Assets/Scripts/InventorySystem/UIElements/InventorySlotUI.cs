@@ -36,7 +36,7 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         _slot = slot;
         _slot.OnSlotSelected += OnSlotSelected;
         _slot.OnSlotDeselected += OnSlotDeselected;
-        Selected.SetActive(_slot.IsSelected);
+        Selected.GetComponent<RawImage>().color = new Color32(246, 255, 146, 0);
 
         _item = slot.Item;
         _inventory = inventory;
@@ -103,18 +103,31 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         if (!isDragging)
         {
-            _slot.Select();
-            //_inventory.UpdateInventory();
+            if (_slot.IsSelected) {
+                _slot.IncrementSelection();
+            }else {
+                _slot.Select();
+            }
+            
         }
     }
 
     public void OnSlotSelected() {
         QuantityText.text = _slot.QuantitySelected.ToString();
-        Selected.SetActive(_slot.IsSelected);
+        if (Selected == null) {
+            this._inventory.SlotPrefab.Selected.GetComponent<RawImage>().color = new Color32(246, 255, 146, 76);
+        }else {
+            Selected.GetComponent<RawImage>().color = new Color32(246, 255, 146, 76);
+        }
+        
     }
-
+    
     public void OnSlotDeselected() {
         QuantityText.text = "";
-        Selected.SetActive(_slot.IsSelected);
+         if (Selected == null) {
+            this._inventory.SlotPrefab.Selected.GetComponent<RawImage>().color = new Color32(246, 255, 146, 0);
+        }else {
+            Selected.GetComponent<RawImage>().color = new Color32(246, 255, 146, 0);
+        }
     }
 }

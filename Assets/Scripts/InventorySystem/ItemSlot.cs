@@ -54,20 +54,21 @@ public class ItemSlot
 
     public void Select()
     {
+        if (!IsSelected) {
+            IsSelected = true;
+            QuantitySelected = 1;
+            OnSlotSelected?.Invoke();
+        }
         
-        if (IsSelected)
-        {
-            if (QuantitySelected != Amount)
-            {
+        /*
+        if (IsSelected) {
+            if (QuantitySelected != Amount) {
                 QuantitySelected++;
             }
-            else
-            {
+            else {
                 Deselect();
             }            
-        }
-        else
-        {
+        }else {
             IsSelected = !IsSelected;
             QuantitySelected = 1;
         }
@@ -76,13 +77,25 @@ public class ItemSlot
             OnSlotSelected?.Invoke();
         }else {
             OnSlotDeselected?.Invoke();
-        }
+        }*/
     }
     
+    public void IncrementSelection() {
+        if (IsSelected) {
+            if (QuantitySelected < Amount) {
+                QuantitySelected++;
+                OnSlotSelected?.Invoke();
+            }else {
+                Deselect();
+            }
+        }
+    }
     public void Deselect() {
-        IsSelected = false;
-        QuantitySelected = 0;
-        OnSlotDeselected?.Invoke();
+        if (IsSelected) {
+            IsSelected = false;
+            QuantitySelected = 0;
+            OnSlotDeselected?.Invoke();
+        }
     }
     
 }
