@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,6 +12,7 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public Image Image;
     public TextMeshProUGUI AmountText;
+    public TextMeshProUGUI QuantityText;
     public bool IsSelected = false;
     public GameObject Selected;
     private Canvas _canvas;
@@ -18,6 +20,8 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private Transform _parent;
     private ItemBase _item;
     private InventoryUI _inventory;
+    private ItemSlot _slot;
+    private bool isDragging;
 
     public void Initialize(ItemSlot slot, InventoryUI inventory)
     {
@@ -27,12 +31,23 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         AmountText.text = slot.Amount.ToString();
         AmountText.enabled = slot.Amount > 1;
 
+        QuantityText.text = "";
+
+        _slot = slot;
+        _slot.OnSlotSelected += OnSlotSelected;
+        _slot.OnSlotDeselected += OnSlotDeselected;
+        Selected.SetActive(_slot.IsSelected);
+
         _item = slot.Item;
         _inventory = inventory;
+
+        isDragging = false;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        isDragging = true;
+        
         _parent = transform.parent;
 
         // Start moving object from the beginning!
@@ -60,6 +75,7 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        isDragging = false;
         // Find scene objects colliding with mouse point on end dragging
         RaycastHit2D hitData = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
 
@@ -85,7 +101,20 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        IsSelected = !IsSelected;
-        Selected.SetActive(IsSelected);
+        if (!isDragging)
+        {
+            _slot.Select();
+            //_inventory.UpdateInventory();
+        }
+    }
+
+    public void OnSlotSelected() {
+        QuantityText.text = _slot.QuantitySelected.ToString();
+        Selected.SetActive(_slot.IsSelected);
+    }
+
+    public void OnSlotDeselected() {
+        QuantityText.text = "";
+        Selected.SetActive(_slot.IsSelected);
     }
 }

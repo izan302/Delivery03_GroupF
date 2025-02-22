@@ -1,16 +1,19 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
     public Inventory Inventory;
     public InventorySlotUI SlotPrefab;
-
+    public TMP_Text CoinText;
     List<GameObject> _shownObjects;
-
+    public List<ItemSlot> SelectedSlots { get; private set; } = new List<ItemSlot>();
     void Start()
     {
         FillInventory(Inventory);
+        CoinText.text = Inventory.Coin.ToString();
     }
 
     private void OnEnable()
@@ -23,18 +26,21 @@ public class InventoryUI : MonoBehaviour
         Inventory.OnInventoryChange -= UpdateInventory;
     }
 
-    private void UpdateInventory()
+    public void UpdateInventory()
     {
         // Regenerate full inventory on changes
         ClearInventory();
         FillInventory(Inventory);
+        CoinText.text = Inventory.Coin.ToString();
     }
 
     private void ClearInventory()
     {
+        if (_shownObjects == null) return;
+
         foreach (var item in _shownObjects)
         {
-            if (item) Destroy(item);
+            if (item != null) Destroy(item);
         }
 
         _shownObjects.Clear();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [CreateAssetMenu(fileName = "NewInventory", menuName = "Inventory System/Inventory")]
 public class Inventory : ScriptableObject
@@ -9,9 +10,9 @@ public class Inventory : ScriptableObject
 
     [SerializeField]
     List<ItemSlot> Slots;
-    public int Length => Slots.Count;
-
+    public int Length => Slots.Count;   
     public Action OnInventoryChange;
+    public int Coin = 100;
 
     public void AddItem(ItemBase item)
     {
@@ -66,5 +67,46 @@ public class Inventory : ScriptableObject
     public ItemSlot GetSlot(int i)
     {
         return Slots[i];
+    }
+    public void AddItems(ItemSlot _slot) {
+
+        var slot = GetSlot(_slot.Item);
+
+        if ((slot != null) && (slot.Item.IsStackable))
+        {
+            slot.Amount += _slot.QuantitySelected;
+        }
+        else
+        {
+            slot = new ItemSlot(_slot.Item);
+            Slots.Add(slot);
+        }
+
+        OnInventoryChange?.Invoke();
+    }
+
+    public void RemoveItems(ItemBase item, int Quantity)
+    {
+        if (Slots == null) return;
+
+        var slot = GetSlot(item);
+
+        if (slot != null)
+        {
+            slot.RemoveByQuantity(Quantity);
+            if (slot.IsEmpty()) RemoveSlot(slot);
+        }
+
+        OnInventoryChange?.Invoke();
+    }
+    public List<ItemSlot> GetSelectedSlots() {
+        List<ItemSlot> SelectedSlots = new List<ItemSlot>();
+        for (int i = 0; i < Slots.Count; i++)
+        {
+            if (Slots[i].IsSelected) {
+                SelectedSlots.Add(Slots[i]);
+            }
+        }
+        return SelectedSlots;
     }
 }

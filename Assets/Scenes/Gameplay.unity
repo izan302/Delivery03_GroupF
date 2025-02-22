@@ -250,8 +250,8 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 50, y: 50}
-  m_Spacing: {x: 10, y: 10}
+  m_CellSize: {x: 75, y: 75}
+  m_Spacing: {x: 40, y: 45}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &62575998
@@ -310,7 +310,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.08187786, y: 0.13900001}
   m_AnchorMax: {x: 0.35954204, y: 0.8928278}
-  m_AnchoredPosition: {x: 28.999756, y: 0.33288574}
+  m_AnchoredPosition: {x: 1097, y: 0.33288574}
   m_SizeDelta: {x: -6.7647705, y: -0.6658325}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &62576001
@@ -328,6 +328,7 @@ MonoBehaviour:
   Inventory: {fileID: 11400000, guid: b0897b66e9414c844b2ea9a65a719de6, type: 2}
   SlotPrefab: {fileID: 3681835218854342626, guid: e2183a012f627664ab7004e8fa1e9d75,
     type: 3}
+  CoinText: {fileID: 2127330163}
 --- !u!1 &262002673
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,7 +477,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1619, y: -81}
+  m_AnchoredPosition: {x: 417, y: -81}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &499868168
@@ -512,7 +513,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Inventary
+  m_text: Inventory
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -767,9 +768,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: StartSecondDialogue
+      - m_Target: {fileID: 1546767117}
+        m_TargetAssemblyTypeName: BuySellFunctionalities, Assembly-CSharp
+        m_MethodName: BuyButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -778,31 +779,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: HideInventory
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: HideInventory
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &827637569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -896,7 +873,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 445, y: -81}
+  m_AnchoredPosition: {x: 1511, y: -81}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &895798648
@@ -1415,33 +1392,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: StartSecondDialogue
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: HideInventory
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: HideInventory
+      - m_Target: {fileID: 1546767117}
+        m_TargetAssemblyTypeName: BuySellFunctionalities, Assembly-CSharp
+        m_MethodName: SellButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1736,7 +1689,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SELL -->
+  m_text: SELL-->
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1842,7 +1795,7 @@ GameObject:
   - component: {fileID: 1537411343}
   m_Layer: 5
   m_Name: PlayerMoney
-  m_TagString: Untagged
+  m_TagString: Text
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1863,7 +1816,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.06545042, y: 1}
   m_AnchorMax: {x: 0.21, y: 1}
-  m_AnchoredPosition: {x: -15, y: 19}
+  m_AnchoredPosition: {x: -14.999786, y: 19}
   m_SizeDelta: {x: -15.34, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1537411341
@@ -1998,6 +1951,7 @@ GameObject:
   - component: {fileID: 1546767113}
   - component: {fileID: 1546767112}
   - component: {fileID: 1546767116}
+  - component: {fileID: 1546767117}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2109,6 +2063,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3251aaa1223ab4a438ac18cf9f5296b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1546767117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546767111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6b0a5d93fd93dd4f8012f1880c99d02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerInventory: {fileID: 11400000, guid: b8443c34ae655c44f947db8c8cf9976e, type: 2}
+  ShopkeeperInventory: {fileID: 11400000, guid: b0897b66e9414c844b2ea9a65a719de6,
+    type: 2}
 --- !u!1 &1630891417
 GameObject:
   m_ObjectHideFlags: 0
@@ -2642,8 +2611,8 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 50, y: 50}
-  m_Spacing: {x: 10, y: 10}
+  m_CellSize: {x: 75, y: 75}
+  m_Spacing: {x: 40, y: 45}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &1971635129
@@ -2702,7 +2671,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6864428, y: 0.13900001}
   m_AnchorMax: {x: 0.95600003, y: 0.8928278}
-  m_AnchoredPosition: {x: -121, y: -0.33288574}
+  m_AnchoredPosition: {x: -1198, y: -0.33288574}
   m_SizeDelta: {x: 0.23522949, y: -0.6658325}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1971635132
@@ -2720,6 +2689,7 @@ MonoBehaviour:
   Inventory: {fileID: 11400000, guid: b8443c34ae655c44f947db8c8cf9976e, type: 2}
   SlotPrefab: {fileID: 3681835218854342626, guid: e2183a012f627664ab7004e8fa1e9d75,
     type: 3}
+  CoinText: {fileID: 1537411341}
 --- !u!1 &2127330160
 GameObject:
   m_ObjectHideFlags: 0
@@ -2734,7 +2704,7 @@ GameObject:
   - component: {fileID: 2127330165}
   m_Layer: 5
   m_Name: ShopMoney
-  m_TagString: Untagged
+  m_TagString: Text
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

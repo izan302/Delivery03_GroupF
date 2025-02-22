@@ -8,11 +8,16 @@ public class ItemSlot
 {
     public ItemBase Item;
     public int Amount;
-
+    public bool IsSelected;
+    public Action OnSlotSelected;
+    public Action OnSlotDeselected;
+    public int QuantitySelected;
     public ItemSlot(ItemBase item)
     {
         this.Item = item;
         Amount = 1;
+        IsSelected = false;
+        QuantitySelected = 0;
     }
 
     internal bool HasItem(ItemBase item)
@@ -37,10 +42,49 @@ public class ItemSlot
         Amount--;
     }
 
+    internal void RemoveByQuantity(int Quantity)
+    {
+        Amount-=Quantity;
+    }
+
     public bool IsEmpty()
     {
         return Amount < 1;
     }
+
+    public void Select()
+    {
+        
+        if (IsSelected)
+        {
+            if (QuantitySelected != Amount)
+            {
+                QuantitySelected++;
+            }
+            else
+            {
+                Deselect();
+            }            
+        }
+        else
+        {
+            IsSelected = !IsSelected;
+            QuantitySelected = 1;
+        }
+        
+        if (IsSelected) {
+            OnSlotSelected?.Invoke();
+        }else {
+            OnSlotDeselected?.Invoke();
+        }
+    }
+    
+    public void Deselect() {
+        IsSelected = false;
+        QuantitySelected = 0;
+        OnSlotDeselected?.Invoke();
+    }
+    
 }
 
 
