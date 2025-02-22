@@ -4,14 +4,15 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     // NOTE: Inventory UI slots support drag&drop,
     // implementing the Unity provided interfaces by events system
 
     public Image Image;
     public TextMeshProUGUI AmountText;
-
+    public bool IsSelected = false;
+    public GameObject Selected;
     private Canvas _canvas;
     private GraphicRaycaster _raycaster;
     private Transform _parent;
@@ -81,5 +82,10 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         // And centering item position
         transform.localPosition = Vector3.zero;
+    }
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        IsSelected = !IsSelected;
+        Selected.SetActive(IsSelected);
     }
 }

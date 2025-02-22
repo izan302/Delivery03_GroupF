@@ -3,7 +3,7 @@
 [CreateAssetMenu(fileName = "Item", menuName = "Inventory System/Items/Potion")]
 public class ItemPotion : ConsumableItem
 {
-    public int HealthPoints;
+    public int LifeRestore;
 
     public override void Use(IConsume consumer)
     {
