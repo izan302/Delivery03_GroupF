@@ -1,15 +1,14 @@
 ﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LocalizeText : MonoBehaviour
 {
     public string TextKey;
-    private Text _textValue;
+    private TextMeshProUGUI _textValue;
 
     void Start()
     {
-        _textValue = GetComponent<Text>();
+        _textValue = GetComponent<TextMeshProUGUI>();
         _textValue.text = Localizer.GetText(TextKey);
     }
 
@@ -27,6 +26,4 @@ public class LocalizeText : MonoBehaviour
     {
         _textValue.text = Localizer.GetText(TextKey);
     }
-
-
 }

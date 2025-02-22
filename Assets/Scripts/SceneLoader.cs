@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
@@ -19,7 +20,10 @@ public class SceneLoader : MonoBehaviour
     void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             Application.Quit();
+            Debug.Log("Quiteando");
+
         }
     }
+   
 
 }

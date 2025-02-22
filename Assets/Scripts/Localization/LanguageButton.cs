@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class LanguageButton : MonoBehaviour, IPointerClickHandler
 {
     public Language Language;
 
-    private Text _localizedText;
+    private TextMeshProUGUI _localizedText;
 
     public void Start()
     {
-        _localizedText = gameObject.GetComponentInChildren<Text>();
+        _localizedText = gameObject.GetComponentInChildren<TextMeshProUGUI>();
         _localizedText.text = Language.ToString();
     }
 

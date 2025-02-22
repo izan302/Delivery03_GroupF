@@ -12,14 +12,23 @@ public class Localizer : MonoBehaviour
 
     private Language currentLanguage;
     public Language DefaultLanguage;
-    
+
     public static Action OnLanguageChange; // Change language event
 
     private void Awake()
     {
-        Instance = this;
-        currentLanguage = DefaultLanguage;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); 
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
 
+        currentLanguage = DefaultLanguage;
         LoadLanguageSheet();
     }
 
@@ -31,21 +40,20 @@ public class Localizer : MonoBehaviour
     public static void SetLanguage(Language language)
     {
         Instance.currentLanguage = language;
-
         OnLanguageChange?.Invoke();
     }
 
-    void LoadLanguageSheet()
+    private void LoadLanguageSheet()
     {
-        string[] lines = DataSheet.text.Split(new char[]{ '\n'});
+        string[] lines = DataSheet.text.Split(new char[] { '\n' });
 
         for (int i = 1; i < lines.Length; i++)
         {
-            if (lines.Length > 1) AddLanguageData(lines[i]);
+            if (lines[i].Length > 1) AddLanguageData(lines[i]);
         }
     }
 
-    void AddLanguageData(string str)
+    private void AddLanguageData(string str)
     {
         string[] entry = str.Split(new char[] { ';' });
 
@@ -55,4 +63,5 @@ public class Localizer : MonoBehaviour
 
         Data.Add(entry[0], languageData);
     }
+
 }
