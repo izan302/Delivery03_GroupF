@@ -10,12 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b1b70424924ad84d97b3dd5b7ba0dab, type: 3}
-  m_Name: PlayerInventory
+  m_Name: ShopInventory
   m_EditorClassIdentifier: 
   Slots:
   - Item: {fileID: 11400000, guid: 1cda531d9b4ee3c4eb4ef60010c22b43, type: 2}
-    Amount: 5
+    Amount: 60
   - Item: {fileID: 11400000, guid: 5617ce617b07b0b4abdb012a8117324a, type: 2}
-    Amount: 2
+    Amount: 10
+  - Item: {fileID: 11400000, guid: 6a9503d5f29520a47a40b1a5e5a5311e, type: 2}
+    Amount: 0
+  - Item: {fileID: 11400000, guid: 6a9503d5f29520a47a40b1a5e5a5311e, type: 2}
+    Amount: 0
   - Item: {fileID: 11400000, guid: 6a9503d5f29520a47a40b1a5e5a5311e, type: 2}
     Amount: 0
