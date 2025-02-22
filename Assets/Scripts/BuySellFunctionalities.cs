@@ -25,17 +25,19 @@ public class BuySellFunctionalities : MonoBehaviour
         {
             if (_buyer.Coin - (item.Item.Value * item.QuantitySelected) >= 0)
             {
+                _buyer.Coin -= (item.Item.Value * item.QuantitySelected);
+                _seller.Coin += (item.Item.Value * item.QuantitySelected);
+                
                 item.IsSelected = false;
                 _buyer.AddItems(item);
                 _seller.RemoveItems(item.Item, item.QuantitySelected);
 
-                _buyer.Coin -= item.Item.Value * item.QuantitySelected;
-                _seller.Coin += item.Item.Value * item.QuantitySelected;
                 item.QuantitySelected = 0;
+                //MUSICA BIEN (Aldeano minecraft)
             }
             else
             {
-
+                //MUSICA ERROR (Aldeano minecraft)
             }
         }
     }

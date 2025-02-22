@@ -118,6 +118,7 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         
     }
 
+    //MIRAR ERROR PROFE AYUDA ME MUERO.COM
     public void OnSlotSelected() {
         QuantityText.text = _slot.QuantitySelected.ToString();
         if (Selected == null) {
