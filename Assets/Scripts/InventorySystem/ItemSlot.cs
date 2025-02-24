@@ -45,7 +45,7 @@ public class ItemSlot
 
     internal void RemoveByQuantity(int Quantity)
     {
-        Amount-=Quantity;
+        Amount -= Quantity;
     }
 
     public bool IsEmpty()
@@ -55,43 +55,59 @@ public class ItemSlot
 
     public void Select()
     {
-        if (!IsSelected) {
+        if (!IsSelected)
+        {
             IsSelected = true;
             QuantitySelected = 1;
             OnSlotSelected?.Invoke();
         }
     }
-    
-    public void IncrementSelection() {
-        if (IsSelected) {
-            if (QuantitySelected < Amount) {
+
+    public void IncrementSelection()
+    {
+        if (IsSelected)
+        {
+            if (QuantitySelected < Amount)
+            {
                 QuantitySelected++;
                 OnSlotSelected?.Invoke();
-            }else {
+            }
+            else
+            {
                 Deselect();
             }
         }
     }
-    public void SelectAll() {
+    public void SelectAll()
+    {
         QuantitySelected = Amount;
         OnSlotSelected?.Invoke();
     }
-    public void DecreaseSelection() {
-        if (QuantitySelected == 1) {
+    public void DecreaseSelection()
+    {
+        if (QuantitySelected == 1)
+        {
             Deselect();
-        }else {
+        }
+        else
+        {
             QuantitySelected--;
             OnSlotSelected?.Invoke();
         }
     }
-    public void Deselect() {
-        if (IsSelected) {
+    public void Deselect()
+    {
+        if (IsSelected)
+        {
             IsSelected = false;
             QuantitySelected = 0;
             OnSlotDeselected?.Invoke();
         }
     }
-    
+    public void Use()
+    {
+        RemoveOne();
+    }
 }
 
 

@@ -17,6 +17,10 @@ public class BuySellFunctionalities : MonoBehaviour
     {
         Transaction(ShopkeeperInventory, PlayerInventory);
     }
+    public void UseButton()
+    {
+        Use(PlayerInventory);
+    }
 
     private void Transaction(Inventory _buyer, Inventory _seller)
     {
@@ -38,6 +42,18 @@ public class BuySellFunctionalities : MonoBehaviour
             else
             {
                 //MUSICA ERROR (Aldeano minecraft)
+            }
+        }
+    }
+    private void Use(Inventory user)
+    {
+        List<ItemSlot> Items = user.GetSelectedSlots();
+        foreach (var item in Items)
+        {
+            if (item.Item.IsConsumable)
+            {
+                (item.Item as ConsumableItem).Use(item.Item as IConsume);
+                item.Use();
             }
         }
     }
