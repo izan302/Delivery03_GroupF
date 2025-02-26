@@ -33,4 +33,12 @@ MonoBehaviour:
     Amount: 1
     IsSelected: 0
     QuantitySelected: 0
-  Coin: 97280
+  - Item: {fileID: 11400000, guid: 6a9503d5f29520a47a40b1a5e5a5311e, type: 2}
+    Amount: 1
+    IsSelected: 0
+    QuantitySelected: 0
+  - Item: {fileID: 11400000, guid: 6a9503d5f29520a47a40b1a5e5a5311e, type: 2}
+    Amount: 1
+    IsSelected: 0
+    QuantitySelected: 0
+  Coin: 100

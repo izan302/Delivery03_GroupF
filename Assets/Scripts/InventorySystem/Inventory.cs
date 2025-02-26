@@ -13,7 +13,11 @@ public class Inventory : ScriptableObject
     public int Length => Slots.Count;   
     public Action OnInventoryChange;
     public int Coin = 100;
-
+    AudioManager Audio;
+    public void OnEnable()
+    {
+        Audio = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     public void AddItem(ItemBase item)
     {
         // Lazy initialization of slots list
@@ -143,6 +147,9 @@ public class Inventory : ScriptableObject
                 Coin += _slot.Item.Value * _slot.QuantitySelected;
                 RemoveItems(_slot.Item, _slot.QuantitySelected);
             }
+            Audio.PlaySFX(Audio.VillagerGood);
+        }else {
+            Audio.PlaySFX(Audio.VillagerConfused);
         }
     }
     public void UpdateInventory() {
