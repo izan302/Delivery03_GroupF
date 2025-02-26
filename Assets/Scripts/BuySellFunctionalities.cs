@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -13,7 +14,22 @@ public class BuySellFunctionalities : MonoBehaviour
     public void Awake()
     {
         Audio = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        PlayerInventory.OnTransactionCompleted += TransactionCompleted;
+        PlayerInventory.OnTransactionFailed += TransactionFailed;
+        
+        ShopkeeperInventory.OnTransactionCompleted += TransactionCompleted;
+        ShopkeeperInventory.OnTransactionFailed += TransactionFailed;
     }
+
+    private void TransactionCompleted()
+    {
+        Audio.PlaySFX(Audio.VillagerGood);
+    }
+    private void TransactionFailed()
+    {
+        Audio.PlaySFX(Audio.VillagerConfused);
+    }
+
     public void BuyButton()
     {
         Transaction(PlayerInventory, ShopkeeperInventory);

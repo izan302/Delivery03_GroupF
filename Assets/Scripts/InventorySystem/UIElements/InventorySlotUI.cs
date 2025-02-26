@@ -116,6 +116,7 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                         (_item as ConsumableItem).Use(consumer);
                         _inventory.UseItem(_item);
                     }
+                    _slot.Deselect();
                 }
             }
         }

@@ -7,17 +7,14 @@ using UnityEngine.EventSystems;
 public class Inventory : ScriptableObject
 {
     // NOTE: One slot can contain multiple items of one type
+    public Action OnTransactionCompleted;
+    public Action OnTransactionFailed;
 
     [SerializeField]
     List<ItemSlot> Slots;
     public int Length => Slots.Count;
     public Action OnInventoryChange;
     public int Coin = 100;
-    AudioManager Audio;
-    public void OnEnable()
-    {
-        Audio = FindAnyObjectByType<AudioManager>();
-    }
     public void AddItem(ItemBase item)
     {
         // Lazy initialization of slots list
@@ -163,11 +160,11 @@ public class Inventory : ScriptableObject
                 Coin += _slot.Item.Value * _slot.QuantitySelected;
                 RemoveItems(_slot.Item, _slot.QuantitySelected);
             }
-            Audio.PlaySFX(Audio.VillagerGood);
+            OnTransactionCompleted?.Invoke();
         }
         else
         {
-            Audio.PlaySFX(Audio.VillagerConfused);
+            OnTransactionFailed?.Invoke();
         }
     }
     public void UpdateInventory()
