@@ -436,7 +436,8 @@ MonoBehaviour:
   MusicSource: {fileID: 1202624117}
   SFXSource: {fileID: 1817036938}
   Background: {fileID: 8300000, guid: d16a7f7ab2a1b0544a845d4423bb6287, type: 3}
-  Detection: {fileID: 0}
+  VillagerGood: {fileID: 0}
+  VillagerConfused: {fileID: 0}
 --- !u!82 &239582589
 AudioSource:
   m_ObjectHideFlags: 0
@@ -631,7 +632,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 153}
+  m_AnchoredPosition: {x: 0, y: 335}
   m_SizeDelta: {x: 515.17, y: 158}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &365381495
@@ -897,7 +898,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.806
+  m_Volume: 0.047
   m_Pitch: 1
   Loop: 0
   Mute: 0
