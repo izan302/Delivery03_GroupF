@@ -82,17 +82,21 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         if (hitData)
         {
             //Debug.Log("Drop over object: " + hitData.collider.gameObject.name);
+            if (hitData.collider.gameObject.tag == "Inventory" && _inventory.Inventory != hitData.collider.gameObject.GetComponent<InventoryUI>().Inventory) {
+                _inventory.Inventory.SellItem(hitData.collider.gameObject.GetComponent<InventoryUI>().Inventory, _slot);
+                _slot.Deselect();
+            }else {
+                var consumer = hitData.collider.GetComponent<IConsume>();
+                bool consumable = _item is ConsumableItem;
 
-            var consumer = hitData.collider.GetComponent<IConsume>();
-            bool consumable = _item is ConsumableItem;
-
-            if ((consumer != null) && consumable && this._inventory.Inventory.name != "ShopInventory")
-            {
-                int Quantity;
-                if (_slot.QuantitySelected == 0) Quantity = 1; else Quantity = _slot.QuantitySelected;
-                for (int i = 0; i < Quantity; i++) {
-                    (_item as ConsumableItem).Use(consumer);
-                    _inventory.UseItem(_item);
+                if ((consumer != null) && consumable && this._inventory.Inventory.name != "ShopInventory")
+                {
+                    int Quantity;
+                    if (_slot.QuantitySelected == 0) Quantity = 1; else Quantity = _slot.QuantitySelected;
+                    for (int i = 0; i < Quantity; i++) {
+                        (_item as ConsumableItem).Use(consumer);
+                        _inventory.UseItem(_item);
+                    }
                 }
             }
         }

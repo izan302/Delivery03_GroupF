@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slots:
   - Item: {fileID: 11400000, guid: 5617ce617b07b0b4abdb012a8117324a, type: 2}
-    Amount: 48
+    Amount: 11
     IsSelected: 0
     QuantitySelected: 0
   - Item: {fileID: 11400000, guid: 1cda531d9b4ee3c4eb4ef60010c22b43, type: 2}
-    Amount: 182
+    Amount: 143
     IsSelected: 0
     QuantitySelected: 0
   - Item: {fileID: 11400000, guid: 6a9503d5f29520a47a40b1a5e5a5311e, type: 2}
@@ -37,4 +37,4 @@ MonoBehaviour:
     Amount: 1
     IsSelected: 0
     QuantitySelected: 0
-  Coin: 460
+  Coin: 910

@@ -74,7 +74,13 @@ public class Inventory : ScriptableObject
 
         if ((slot != null) && (slot.Item.IsStackable))
         {
-            slot.Amount += _slot.QuantitySelected;
+            if (_slot.QuantitySelected != 0) {
+                slot.Amount += _slot.QuantitySelected;
+            }else 
+            {
+                slot.Amount++;
+            }
+            
         }
         else
         {
@@ -109,7 +115,36 @@ public class Inventory : ScriptableObject
         }
         return SelectedSlots;
     }
+    public bool BuyItem(ItemSlot _slot) {
+        bool ItemSold = false;
+        if (_slot.QuantitySelected != 0) {
+            if (Coin - _slot.Item.Value * _slot.QuantitySelected >= 0) {
+                ItemSold = true;
+                Coin -= _slot.Item.Value * _slot.QuantitySelected;
+                AddItems(_slot);
+            }
+        }else {
+            if (Coin - _slot.Item.Value >= 0) {
+                ItemSold = true;
+                Coin -= _slot.Item.Value;
+                AddItems(_slot);
+            }
+        }
+        
+        return ItemSold;
+    }
 
+    public void SellItem(Inventory _buyer, ItemSlot _slot) {
+        if (_buyer.BuyItem(_slot)) {
+            if (_slot.QuantitySelected == 0) {
+                Coin += _slot.Item.Value;
+                RemoveItems(_slot.Item, 1);
+            }else {
+                Coin += _slot.Item.Value * _slot.QuantitySelected;
+                RemoveItems(_slot.Item, _slot.QuantitySelected);
+            }
+        }
+    }
     public void UpdateInventory() {
         OnInventoryChange?.Invoke();
     }
