@@ -41,6 +41,7 @@ public class ItemSlot
     internal void RemoveOne()
     {
         Amount--;
+        Deselect();
     }
 
     internal void RemoveByQuantity(int Quantity)
@@ -89,7 +90,7 @@ public class ItemSlot
         {
             Deselect();
         }
-        else
+        else if (QuantitySelected != 0)
         {
             QuantitySelected--;
             OnSlotSelected?.Invoke();

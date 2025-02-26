@@ -17,4 +17,4 @@ MonoBehaviour:
   IsStackable: 1
   IsConsumable: 1
   Value: 20
-  LifeRestore: 20
+  LifeRestore: 10

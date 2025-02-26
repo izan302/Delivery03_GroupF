@@ -7,6 +7,7 @@ public class BuySellFunctionalities : MonoBehaviour
 {
     public Inventory PlayerInventory;
     public Inventory ShopkeeperInventory;
+    public GameObject Healthbar;
 
     public void BuyButton()
     {
@@ -19,7 +20,21 @@ public class BuySellFunctionalities : MonoBehaviour
     }
     public void UseButton()
     {
-        Use(PlayerInventory);
+        List<ItemSlot> Items = PlayerInventory.GetSelectedSlots();
+        foreach (var item in Items)
+        {
+            if (item.Item.IsConsumable)
+            {
+                for (int i = 0; i < item.Amount; i++) {
+                    if (Healthbar.GetComponent<HealthManager>().GetCurrentHealth() != Healthbar.GetComponent<HealthManager>().GetMaxHealth()) {
+                        (item.Item as ConsumableItem).Use(Healthbar.GetComponent<IConsume>());
+                        item.RemoveOne();
+                    }  
+                }           
+            }
+            item.Deselect();
+        }
+        PlayerInventory.UpdateInventory();
     }
 
     private void Transaction(Inventory _buyer, Inventory _seller)
@@ -42,18 +57,6 @@ public class BuySellFunctionalities : MonoBehaviour
             else
             {
                 //MUSICA ERROR (Aldeano minecraft)
-            }
-        }
-    }
-    private void Use(Inventory user)
-    {
-        List<ItemSlot> Items = user.GetSelectedSlots();
-        foreach (var item in Items)
-        {
-            if (item.Item.IsConsumable)
-            {
-                (item.Item as ConsumableItem).Use(item.Item as IConsume);
-                item.Use();
             }
         }
     }

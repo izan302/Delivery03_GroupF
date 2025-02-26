@@ -109,4 +109,8 @@ public class Inventory : ScriptableObject
         }
         return SelectedSlots;
     }
+
+    public void UpdateInventory() {
+        OnInventoryChange?.Invoke();
+    }
 }

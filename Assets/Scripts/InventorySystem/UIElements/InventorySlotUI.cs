@@ -81,15 +81,17 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         if (hitData)
         {
-            Debug.Log("Drop over object: " + hitData.collider.gameObject.name);
+            //Debug.Log("Drop over object: " + hitData.collider.gameObject.name);
 
             var consumer = hitData.collider.GetComponent<IConsume>();
             bool consumable = _item is ConsumableItem;
 
-            if ((consumer != null) && consumable)
+            if ((consumer != null) && consumable && this._inventory.Inventory.name != "ShopInventory")
             {
-                (_item as ConsumableItem).Use(consumer);
-                _inventory.UseItem(_item);
+                for (int i = 0; i < _slot.Amount; i++) {
+                    (_item as ConsumableItem).Use(consumer);
+                    _inventory.UseItem(_item);
+                }
             }
         }
 
@@ -101,7 +103,6 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-
         if (eventData.button == PointerEventData.InputButton.Left) {
             if (!isDragging) {
                 if (_slot.IsSelected) {
@@ -117,8 +118,6 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         }
         
     }
-
-    //MIRAR ERROR PROFE AYUDA ME MUERO.COM
     public void OnSlotSelected() {
         QuantityText.text = _slot.QuantitySelected.ToString();
         if (Selected == null) {

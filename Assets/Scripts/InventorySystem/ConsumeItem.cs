@@ -13,7 +13,7 @@ public class ConsumeItem : MonoBehaviour, IConsume
     {
         if (item is ItemPotion)
         {
-            Debug.Log("Health potion consumed!");
+            //Debug.Log("Health potion consumed!");
             bar.HealTaken((item as ItemPotion).LifeRestore);
         }
     }

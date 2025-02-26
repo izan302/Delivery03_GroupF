@@ -32,7 +32,12 @@ public class HealthManager : MonoBehaviour
         FillImage.color = ColorGradient.Evaluate(hp);
         _slider.gameObject.SetActive(true);
     }
-
+    public float GetMaxHealth() {
+        return MaxHealth;
+    }
+    public float GetCurrentHealth() {
+        return hpAmount;
+    }
     private void OnMouseDown()
     {
         DamageTaken(10);
