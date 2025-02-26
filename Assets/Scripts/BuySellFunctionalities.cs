@@ -16,7 +16,7 @@ public class BuySellFunctionalities : MonoBehaviour
         Audio = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         PlayerInventory.OnTransactionCompleted += TransactionCompleted;
         PlayerInventory.OnTransactionFailed += TransactionFailed;
-        
+
         ShopkeeperInventory.OnTransactionCompleted += TransactionCompleted;
         ShopkeeperInventory.OnTransactionFailed += TransactionFailed;
     }
@@ -62,6 +62,7 @@ public class BuySellFunctionalities : MonoBehaviour
 
     private void Transaction(Inventory _buyer, Inventory _seller)
     {
+        bool TransactionSuceeded = false;
         List<ItemSlot> Items = _seller.GetSelectedSlots();
         foreach (var item in Items)
         {
@@ -76,14 +77,16 @@ public class BuySellFunctionalities : MonoBehaviour
 
                 item.QuantitySelected = 0;
 
-                Audio.PlaySFX(Audio.VillagerGood);
-                //MUSICA BIEN (Aldeano minecraft)
+                TransactionSuceeded = true;
             }
-            else
-            {
-                Audio.PlaySFX(Audio.VillagerConfused);
-                //MUSICA ERROR (Aldeano minecraft)
-            }
+        }
+        if (TransactionSuceeded)
+        {
+            TransactionCompleted();
+        }
+        else
+        {
+            TransactionFailed();
         }
     }
 }
