@@ -6,7 +6,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource SFXSource;
 
     public AudioClip Background;
-    public AudioClip Detection;
+    public AudioClip VillagerGood;
+    public AudioClip VillagerConfused;
 
     private void Start()
     {

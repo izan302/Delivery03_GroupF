@@ -1674,7 +1674,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.382
+  m_Volume: 0.55
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3444,7 +3444,7 @@ GameObject:
   - component: {fileID: 1714968806}
   m_Layer: 0
   m_Name: Audio Manager
-  m_TagString: Untagged
+  m_TagString: Audio
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3464,7 +3464,8 @@ MonoBehaviour:
   MusicSource: {fileID: 2103005880}
   SFXSource: {fileID: 901058249}
   Background: {fileID: 8300000, guid: 9f6958964f880c649b5f3d0f2f312258, type: 3}
-  Detection: {fileID: 0}
+  VillagerGood: {fileID: 8300000, guid: 856104f1599208942837723c4fb947fe, type: 3}
+  VillagerConfused: {fileID: 8300000, guid: 8b24512fb723caa48bb34a5a2f7a9c0a, type: 3}
 --- !u!82 &1714968807
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4224,9 +4225,9 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.806
+  m_Volume: 0.503
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

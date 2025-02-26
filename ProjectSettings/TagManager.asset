@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Text
   - Healthbar
+  - Audio
   layers:
   - Default
   - TransparentFX

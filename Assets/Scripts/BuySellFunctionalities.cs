@@ -8,7 +8,12 @@ public class BuySellFunctionalities : MonoBehaviour
     public Inventory PlayerInventory;
     public Inventory ShopkeeperInventory;
     public GameObject Healthbar;
+    AudioManager Audio;
 
+    public void Awake()
+    {
+        Audio = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     public void BuyButton()
     {
         Transaction(PlayerInventory, ShopkeeperInventory);
@@ -52,10 +57,13 @@ public class BuySellFunctionalities : MonoBehaviour
                 _seller.RemoveItems(item.Item, item.QuantitySelected);
 
                 item.QuantitySelected = 0;
+               
+                Audio.PlaySFX(Audio.VillagerGood);
                 //MUSICA BIEN (Aldeano minecraft)
             }
             else
             {
+                Audio.PlaySFX(Audio.VillagerConfused);
                 //MUSICA ERROR (Aldeano minecraft)
             }
         }
