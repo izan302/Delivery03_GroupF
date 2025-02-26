@@ -4,5 +4,6 @@ using UnityEngine;
 
 public abstract class ConsumableItem : ItemBase
 {
+    public float LifeRestore;
     public abstract void Use(IConsume consumer);
 }

@@ -16,7 +16,7 @@ public class Inventory : ScriptableObject
     AudioManager Audio;
     public void OnEnable()
     {
-        Audio = GameObject.FindAnyObjectByType<AudioManager>();
+        Audio = FindAnyObjectByType<AudioManager>();
     }
     public void AddItem(ItemBase item)
     {

@@ -65,6 +65,7 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         // And set it as last child to be rendered on top of UI
         transform.SetAsLastSibling();
+
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -82,10 +83,23 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         if (hitData)
         {
             //Debug.Log("Drop over object: " + hitData.collider.gameObject.name);
-            if (hitData.collider.gameObject.tag == "Inventory" && _inventory.Inventory != hitData.collider.gameObject.GetComponent<InventoryUI>().Inventory)
+            Inventory buyerInventory = hitData.collider.gameObject.GetComponent<InventoryUI>().Inventory;
+            if (hitData.collider.gameObject.tag == "Inventory" && _inventory.Inventory != buyerInventory)
             {
-                _inventory.Inventory.SellItem(hitData.collider.gameObject.GetComponent<InventoryUI>().Inventory, _slot);
-                _slot.Deselect();
+                List<ItemSlot> selectedSlots = _inventory.Inventory.GetSelectedSlots();
+                if (selectedSlots.Count != 0)
+                {
+                    foreach (var slot in selectedSlots)
+                    {
+                        _inventory.Inventory.SellItem(buyerInventory, slot);
+                        slot.Deselect();
+                    }
+                }
+                else
+                {
+                    _inventory.Inventory.SellItem(buyerInventory, _slot);
+                    _slot.Deselect();
+                }
             }
             else
             {
