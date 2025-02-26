@@ -10,13 +10,13 @@ public class Inventory : ScriptableObject
 
     [SerializeField]
     List<ItemSlot> Slots;
-    public int Length => Slots.Count;   
+    public int Length => Slots.Count;
     public Action OnInventoryChange;
     public int Coin = 100;
     AudioManager Audio;
     public void OnEnable()
     {
-        Audio = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        Audio = GameObject.FindAnyObjectByType<AudioManager>();
     }
     public void AddItem(ItemBase item)
     {
@@ -72,19 +72,22 @@ public class Inventory : ScriptableObject
     {
         return Slots[i];
     }
-    public void AddItems(ItemSlot _slot) {
+    public void AddItems(ItemSlot _slot)
+    {
 
         var slot = GetSlot(_slot.Item);
 
         if ((slot != null) && (slot.Item.IsStackable))
         {
-            if (_slot.QuantitySelected != 0) {
+            if (_slot.QuantitySelected != 0)
+            {
                 slot.Amount += _slot.QuantitySelected;
-            }else 
+            }
+            else
             {
                 slot.Amount++;
             }
-            
+
         }
         else
         {
@@ -109,50 +112,66 @@ public class Inventory : ScriptableObject
 
         OnInventoryChange?.Invoke();
     }
-    public List<ItemSlot> GetSelectedSlots() {
+    public List<ItemSlot> GetSelectedSlots()
+    {
         List<ItemSlot> SelectedSlots = new List<ItemSlot>();
         for (int i = 0; i < Slots.Count; i++)
         {
-            if (Slots[i].IsSelected) {
+            if (Slots[i].IsSelected)
+            {
                 SelectedSlots.Add(Slots[i]);
             }
         }
         return SelectedSlots;
     }
-    public bool BuyItem(ItemSlot _slot) {
+    public bool BuyItem(ItemSlot _slot)
+    {
         bool ItemSold = false;
-        if (_slot.QuantitySelected != 0) {
-            if (Coin - _slot.Item.Value * _slot.QuantitySelected >= 0) {
+        if (_slot.QuantitySelected != 0)
+        {
+            if (Coin - _slot.Item.Value * _slot.QuantitySelected >= 0)
+            {
                 ItemSold = true;
                 Coin -= _slot.Item.Value * _slot.QuantitySelected;
                 AddItems(_slot);
             }
-        }else {
-            if (Coin - _slot.Item.Value >= 0) {
+        }
+        else
+        {
+            if (Coin - _slot.Item.Value >= 0)
+            {
                 ItemSold = true;
                 Coin -= _slot.Item.Value;
                 AddItems(_slot);
             }
         }
-        
+
         return ItemSold;
     }
 
-    public void SellItem(Inventory _buyer, ItemSlot _slot) {
-        if (_buyer.BuyItem(_slot)) {
-            if (_slot.QuantitySelected == 0) {
+    public void SellItem(Inventory _buyer, ItemSlot _slot)
+    {
+        if (_buyer.BuyItem(_slot))
+        {
+            if (_slot.QuantitySelected == 0)
+            {
                 Coin += _slot.Item.Value;
                 RemoveItems(_slot.Item, 1);
-            }else {
+            }
+            else
+            {
                 Coin += _slot.Item.Value * _slot.QuantitySelected;
                 RemoveItems(_slot.Item, _slot.QuantitySelected);
             }
             Audio.PlaySFX(Audio.VillagerGood);
-        }else {
+        }
+        else
+        {
             Audio.PlaySFX(Audio.VillagerConfused);
         }
     }
-    public void UpdateInventory() {
+    public void UpdateInventory()
+    {
         OnInventoryChange?.Invoke();
     }
 }

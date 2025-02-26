@@ -47,22 +47,22 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public void OnBeginDrag(PointerEventData eventData)
     {
         isDragging = true;
-        
+
         _parent = transform.parent;
 
         // Start moving object from the beginning!
         transform.localPosition += new Vector3(eventData.delta.x, eventData.delta.y, 0);
-        
+
         // We need a few references from UI
         if (!_canvas)
         {
             _canvas = GetComponentInParent<Canvas>();
             _raycaster = _canvas.GetComponent<GraphicRaycaster>();
         }
-        
+
         // Change parent of our item to the canvas
         transform.SetParent(_canvas.transform, true);
-        
+
         // And set it as last child to be rendered on top of UI
         transform.SetAsLastSibling();
     }
@@ -82,10 +82,13 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         if (hitData)
         {
             //Debug.Log("Drop over object: " + hitData.collider.gameObject.name);
-            if (hitData.collider.gameObject.tag == "Inventory" && _inventory.Inventory != hitData.collider.gameObject.GetComponent<InventoryUI>().Inventory) {
+            if (hitData.collider.gameObject.tag == "Inventory" && _inventory.Inventory != hitData.collider.gameObject.GetComponent<InventoryUI>().Inventory)
+            {
                 _inventory.Inventory.SellItem(hitData.collider.gameObject.GetComponent<InventoryUI>().Inventory, _slot);
                 _slot.Deselect();
-            }else {
+            }
+            else
+            {
                 var consumer = hitData.collider.GetComponent<IConsume>();
                 bool consumable = _item is ConsumableItem;
 
@@ -93,7 +96,8 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
                 {
                     int Quantity;
                     if (_slot.QuantitySelected == 0) Quantity = 1; else Quantity = _slot.QuantitySelected;
-                    for (int i = 0; i < Quantity; i++) {
+                    for (int i = 0; i < Quantity; i++)
+                    {
                         (_item as ConsumableItem).Use(consumer);
                         _inventory.UseItem(_item);
                     }
@@ -109,36 +113,53 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Left) {
-            if (!isDragging) {
-                if (_slot.IsSelected) {
-                _slot.IncrementSelection();
-                }else {
-                _slot.Select();
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            if (!isDragging)
+            {
+                if (_slot.IsSelected)
+                {
+                    _slot.IncrementSelection();
+                }
+                else
+                {
+                    _slot.Select();
                 }
             }
-        }else if (eventData.button == PointerEventData.InputButton.Right) {
+        }
+        else if (eventData.button == PointerEventData.InputButton.Right)
+        {
             _slot.DecreaseSelection();
-        }else if (eventData.button == PointerEventData.InputButton.Middle) {
+        }
+        else if (eventData.button == PointerEventData.InputButton.Middle)
+        {
             _slot.SelectAll();
         }
-        
+
     }
-    public void OnSlotSelected() {
+    public void OnSlotSelected()
+    {
         QuantityText.text = _slot.QuantitySelected.ToString();
-        if (Selected == null) {
+        if (Selected == null)
+        {
             this._inventory.SlotPrefab.Selected.GetComponent<RawImage>().color = new Color32(246, 255, 146, 76);
-        }else {
+        }
+        else
+        {
             Selected.GetComponent<RawImage>().color = new Color32(246, 255, 146, 76);
         }
-        
+
     }
 
-    public void OnSlotDeselected() {
+    public void OnSlotDeselected()
+    {
         QuantityText.text = "";
-         if (Selected == null) {
+        if (Selected == null)
+        {
             this._inventory.SlotPrefab.Selected.GetComponent<RawImage>().color = new Color32(246, 255, 146, 0);
-        }else {
+        }
+        else
+        {
             Selected.GetComponent<RawImage>().color = new Color32(246, 255, 146, 0);
         }
     }

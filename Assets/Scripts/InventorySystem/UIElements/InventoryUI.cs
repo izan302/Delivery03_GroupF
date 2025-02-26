@@ -63,7 +63,7 @@ public class InventoryUI : MonoBehaviour
     {
         // Add a new visual slot UI in inventory UI, using provided prefab
         var element = GameObject.Instantiate(SlotPrefab, Vector3.zero, Quaternion.identity, transform);
-        
+
         element.Initialize(inventorySlot, this);
 
         return element.gameObject;

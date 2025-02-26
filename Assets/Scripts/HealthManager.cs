@@ -24,7 +24,7 @@ public class HealthManager : MonoBehaviour
     public void DamageTaken(float damage)
     {
         hpAmount = hpAmount - damage;
-        SetValue(hpAmount/MaxHealth);
+        SetValue(hpAmount / MaxHealth);
     }
     public void SetValue(float hp)
     {
@@ -32,10 +32,12 @@ public class HealthManager : MonoBehaviour
         FillImage.color = ColorGradient.Evaluate(hp);
         _slider.gameObject.SetActive(true);
     }
-    public float GetMaxHealth() {
+    public float GetMaxHealth()
+    {
         return MaxHealth;
     }
-    public float GetCurrentHealth() {
+    public float GetCurrentHealth()
+    {
         return hpAmount;
     }
     private void OnMouseDown()

@@ -30,12 +30,14 @@ public class BuySellFunctionalities : MonoBehaviour
         {
             if (item.Item.IsConsumable)
             {
-                for (int i = 0; i < item.QuantitySelected; i++) {
-                    if (Healthbar.GetComponent<HealthManager>().GetCurrentHealth() != Healthbar.GetComponent<HealthManager>().GetMaxHealth()) {
+                for (int i = 0; i < item.QuantitySelected; i++)
+                {
+                    if (Healthbar.GetComponent<HealthManager>().GetCurrentHealth() != Healthbar.GetComponent<HealthManager>().GetMaxHealth())
+                    {
                         (item.Item as ConsumableItem).Use(Healthbar.GetComponent<IConsume>());
                         item.RemoveOne();
-                    }  
-                }           
+                    }
+                }
             }
             item.Deselect();
         }
@@ -51,13 +53,13 @@ public class BuySellFunctionalities : MonoBehaviour
             {
                 _buyer.Coin -= (item.Item.Value * item.QuantitySelected);
                 _seller.Coin += (item.Item.Value * item.QuantitySelected);
-                
+
                 item.IsSelected = false;
                 _buyer.AddItems(item);
                 _seller.RemoveItems(item.Item, item.QuantitySelected);
 
                 item.QuantitySelected = 0;
-               
+
                 Audio.PlaySFX(Audio.VillagerGood);
                 //MUSICA BIEN (Aldeano minecraft)
             }
