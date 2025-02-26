@@ -41,7 +41,6 @@ public class ItemSlot
     internal void RemoveOne()
     {
         Amount--;
-        Deselect();
     }
 
     internal void RemoveByQuantity(int Quantity)

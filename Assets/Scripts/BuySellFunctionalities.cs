@@ -25,7 +25,7 @@ public class BuySellFunctionalities : MonoBehaviour
         {
             if (item.Item.IsConsumable)
             {
-                for (int i = 0; i < item.Amount; i++) {
+                for (int i = 0; i < item.QuantitySelected; i++) {
                     if (Healthbar.GetComponent<HealthManager>().GetCurrentHealth() != Healthbar.GetComponent<HealthManager>().GetMaxHealth()) {
                         (item.Item as ConsumableItem).Use(Healthbar.GetComponent<IConsume>());
                         item.RemoveOne();

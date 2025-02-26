@@ -88,7 +88,9 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
             if ((consumer != null) && consumable && this._inventory.Inventory.name != "ShopInventory")
             {
-                for (int i = 0; i < _slot.Amount; i++) {
+                int Quantity;
+                if (_slot.QuantitySelected == 0) Quantity = 1; else Quantity = _slot.QuantitySelected;
+                for (int i = 0; i < Quantity; i++) {
                     (_item as ConsumableItem).Use(consumer);
                     _inventory.UseItem(_item);
                 }

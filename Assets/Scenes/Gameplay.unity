@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 62575998}
   - component: {fileID: 62575997}
   - component: {fileID: 62576001}
+  - component: {fileID: 62576002}
   m_Layer: 5
   m_Name: InventoryShop
   m_TagString: Untagged
@@ -308,12 +309,12 @@ RectTransform:
   - {fileID: 895798647}
   - {fileID: 1193249805}
   - {fileID: 2127330161}
-  m_Father: {fileID: 958422044}
+  m_Father: {fileID: 1546767115}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6864428, y: 0.13900001}
   m_AnchorMax: {x: 0.95600003, y: 0.8928278}
-  m_AnchoredPosition: {x: -83.000244, y: 4.7865906}
-  m_SizeDelta: {x: 11.910122, y: 1491.618}
+  m_AnchoredPosition: {x: -83.00012, y: -29.589966}
+  m_SizeDelta: {x: 11.91, y: -136.6499}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &62576001
 MonoBehaviour:
@@ -331,6 +332,52 @@ MonoBehaviour:
   SlotPrefab: {fileID: 3681835218854342626, guid: e2183a012f627664ab7004e8fa1e9d75,
     type: 3}
   CoinText: {fileID: 2127330163}
+--- !u!61 &62576002
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62575995}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &262002673
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,7 +562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae845d66ef0a674986d060ce4f95405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextKey: Select All
+  TextKey: SelectAll
 --- !u!114 &369212285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -601,7 +648,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -200.88023, w: 0}
+  m_margin: {x: 0, y: 0, z: -335.16782, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -722,7 +769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae845d66ef0a674986d060ce4f95405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextKey: Select 1
+  TextKey: Select1
 --- !u!114 &428243967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,7 +855,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -200.88023, w: 0}
+  m_margin: {x: 0, y: 0, z: -315.90656, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1741,7 +1788,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &958422044
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1753,9 +1800,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1352066077}
-  - {fileID: 62576000}
+  m_Children: []
   m_Father: {fileID: 1546767115}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1984,7 +2029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae845d66ef0a674986d060ce4f95405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextKey: Deselect 1
+  TextKey: Deselect1
 --- !u!114 &1015856169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2070,7 +2115,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -200.88023, w: 0}
+  m_margin: {x: 0, y: 0, z: -335.88504, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2528,7 +2573,7 @@ Transform:
   m_GameObject: {fileID: 1276268989}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 615.0801, y: -486, z: -9720}
+  m_LocalPosition: {x: 546.6674, y: -486, z: -9720}
   m_LocalScale: {x: 324, y: 324, z: 108}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2626,11 +2671,11 @@ RectTransform:
   - {fileID: 1533446086}
   - {fileID: 410332517}
   - {fileID: 518169383}
-  m_Father: {fileID: 958422044}
+  m_Father: {fileID: 1546767115}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00018311, y: -384.99744}
+  m_AnchoredPosition: {x: 0, y: -384.99997}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1352066078
@@ -3343,6 +3388,8 @@ RectTransform:
   - {fileID: 2066357436}
   - {fileID: 1276268990}
   - {fileID: 2138943371}
+  - {fileID: 62576000}
+  - {fileID: 1352066077}
   - {fileID: 1971635131}
   - {fileID: 958422044}
   - {fileID: 827637567}
@@ -3903,6 +3950,7 @@ GameObject:
   - component: {fileID: 1971635129}
   - component: {fileID: 1971635128}
   - component: {fileID: 1971635132}
+  - component: {fileID: 1971635133}
   m_Layer: 5
   m_Name: InventoryPlayer
   m_TagString: Untagged
@@ -3993,7 +4041,7 @@ RectTransform:
   m_AnchorMin: {x: 0.6864428, y: 0.13900001}
   m_AnchorMax: {x: 0.95600003, y: 0.8928278}
   m_AnchoredPosition: {x: -1200.0001, y: -29.589966}
-  m_SizeDelta: {x: 11.910034, y: -136.65009}
+  m_SizeDelta: {x: 11.910034, y: -136.65015}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1971635132
 MonoBehaviour:
@@ -4011,6 +4059,52 @@ MonoBehaviour:
   SlotPrefab: {fileID: 3681835218854342626, guid: e2183a012f627664ab7004e8fa1e9d75,
     type: 3}
   CoinText: {fileID: 1537411341}
+--- !u!61 &1971635133
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971635126}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &2066357435
 GameObject:
   m_ObjectHideFlags: 0
@@ -4037,7 +4131,7 @@ Transform:
   m_GameObject: {fileID: 2066357435}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 614.4127, y: -432, z: -9720}
+  m_LocalPosition: {x: 546, y: -432, z: -9720}
   m_LocalScale: {x: 324, y: 324, z: 108}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4412,7 +4506,7 @@ Transform:
   m_GameObject: {fileID: 2138943370}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 614, y: -378, z: -9720}
+  m_LocalPosition: {x: 545.58734, y: -378, z: -9720}
   m_LocalScale: {x: 324, y: 324, z: 108}
   m_ConstrainProportionsScale: 0
   m_Children:
