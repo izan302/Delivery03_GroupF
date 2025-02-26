@@ -83,8 +83,9 @@ public class InventorySlotUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         if (hitData)
         {
             //Debug.Log("Drop over object: " + hitData.collider.gameObject.name);
-            Inventory buyerInventory = hitData.collider.gameObject.GetComponent<InventoryUI>().Inventory;
-            if (hitData.collider.gameObject.tag == "Inventory" && _inventory.Inventory != buyerInventory)
+            Inventory buyerInventory = null;
+            if (hitData.collider.gameObject.tag == "Inventory") buyerInventory = hitData.collider.gameObject.GetComponent<InventoryUI>().Inventory;
+            if (buyerInventory != null && _inventory.Inventory != buyerInventory)
             {
                 List<ItemSlot> selectedSlots = _inventory.Inventory.GetSelectedSlots();
                 if (selectedSlots.Count != 0)
